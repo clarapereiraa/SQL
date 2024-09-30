@@ -1,0 +1,90 @@
+select * from usuario where id_usuario not between 5 and 7;
+
+select * from usuario where id_usuario in (5, 7);
+
+select * from usuario where id_usuario not in (5, 7);
+
+select * from usuario where telefone is null;
+
+select * from usuario where telefone is not null;
+
+select * from usuario where nome like 'Maria Clara';
+
+select * from usuario where nome like 'M%';
+
+select * from usuario where nome like '%a';
+
+select * from usuario where nome like '%ra%';
+
+show table status like 'usuario';
+
+show full columns from usuario; 
+
+select * from usuario where telefone like '__1%';
+
+select * from usuario where telefone like '%8_';
+
+select * from usuario where telefone like '%_8_%';
+
+select nome, nome from usuario, organizador;
+
+select u.nome as usuario_nome, o.nome as organizador _nome from usuario u, organizador o;
+
+select usuario.nome as usuario_nome, organizador.nome as organizador_nome from usuario, organizador;
+
+select * from usuario order by nome asc;
+
+select * from usuario order by id_usuario desc;
+
+select telefone, count(*) as total_usuario from usuario group by telefone;
+
+
+insert into usuario( nome, email, senha, telefone)
+    values("Adriano Cassiano", "adriano@gmail.com", "1234", "1688881111");
+
+select avg(length(telefone)) as media_comprimento_telefone from organizador;
+
+select telefone, count(*) as total_usuarios from usuario group by telefone having count(*) > 1;
+
+-- atualização dos dados do usuario
+update usuario
+    set telefone = "16999990000"
+    where email = "fogaca@example.com";
+
+-- alterar senha em todos os registros da coluna
+update organizador 
+    set senha = "nova_senha!";
+
+-- remove os registros da tabela 
+delete from nome_da_tabela 
+    where condição;
+
+delete from organizador
+    where email = "pedro.almeida@example.com";
+
+delete from usuario
+    where telefone like "1688%";
+
+update organizador 
+    set senha = "senha_345"
+    where email in ("joao.silva@example.com", "ana.santos@example.com", "pedro.almeida@example.com");
+
+delete from usuario
+    where id_usuario between 3 and 7;
+
+delete from organizador 
+    where telefone like "1109%";
+
+update usuario
+    set telefone = "16000000000"
+    where telefone is null;
+
+delete from usuario
+    where id_usuario in (2, 4, 6);
+
+update organizador 
+    set senha = "nova senha_organizador"
+    where nome = "Fábio Martins" and email = "fabio.martins@example.com";
+
+delete from usuario 
+    where nome = "Pedro Paulo" and telefone = "16888881111";
